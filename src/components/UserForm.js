@@ -13,8 +13,8 @@ const validateUser = (user) => {
 };
 const UserForm = ({ onaddUser }) => {
   const [message, setMessage] = useState("");
-  const [username, changeUsername] = useInput("");
-  const [age, changeAge] = useInput("");
+  const [username, changeUsername, setUsername] = useInput("");
+  const [age, changeAge, setAge] = useInput("");
   const submitHandler = (evt) => {
     evt.preventDefault();
     const user = { username, age };
@@ -22,6 +22,8 @@ const UserForm = ({ onaddUser }) => {
     setMessage(msg);
     if (!msg) {
       onaddUser(user); // if there is no error add user
+      setUsername("");
+      setAge("");
     }
   };
   const closeHandler = () => {
